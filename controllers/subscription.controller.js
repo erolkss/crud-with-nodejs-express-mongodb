@@ -1,5 +1,18 @@
 import Subscription from "../models/subscription.model.js";
 
+export const getAllSubscriptions = async (req, res, next) => {
+    try {
+        const subscriptions = await Subscription.find();
+
+        res.status(200).json({
+            success: true,
+            data:  subscriptions
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const createSubscription = async (req, res, next) => {
     try {
         const subscription = await Subscription.create({
