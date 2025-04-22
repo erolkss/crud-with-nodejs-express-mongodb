@@ -3,7 +3,6 @@ import aj from "../config/arcject.js";
 const arcjectMiddleware = async (req, res, next) => {
     try {
         const decision = await aj.protect(req, { requested: 1});
-        console.log(decision);
 
         if (decision.isDenied()) {
             if (decision.reason.isRateLimit()) {
